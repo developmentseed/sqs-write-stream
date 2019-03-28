@@ -65,7 +65,7 @@ class SqsWriteStream extends stream.Writable {
         if (obj.Id && obj.MessageBody) {
           this.buffer.push(sqsMsg);
         } else {
-          const msg = { MessageBody: JSON.stringify(obj), Id: uuidv4() };
+          const msg = { MessageBody: obj, Id: uuidv4() };
           if (this.options.MessageGroupId) {
             msg.MessageGroupId = this.options.MessageGroupId;
           }
